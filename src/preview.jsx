@@ -100,7 +100,8 @@ export default class Preview extends React.Component {
   }
 
   _onDestroy(item) {
-    store.dispatch('delete', item);
+    if(window.confirm("WARNING! deleting form item will cuase any data attched to this feild to also be removed. Are you sure you want to delete?"))
+      store.dispatch('delete', item);
   }
 
   insertCard(item, hoverIndex) {
