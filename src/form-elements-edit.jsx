@@ -59,6 +59,15 @@ export default class FormElementsEdit extends React.Component {
     });
   }
 
+  onLabelChange(property, content){
+    const this_element = this.state.element;
+    this_element[property] = content;
+    this.setState({
+      element: this_element,
+      dirty: true,
+    });
+  }
+
   updateElement() {
     const this_element = this.state.element;
     // to prevent ajax calls with no change
@@ -99,6 +108,7 @@ export default class FormElementsEdit extends React.Component {
   }
 
   render() {
+    
     if (this.state.dirty) {
       this.props.element.dirty = true;
     }
@@ -128,8 +138,9 @@ export default class FormElementsEdit extends React.Component {
     if (this.props.element.hasOwnProperty('content')) {
       editorState = this.convertFromHTML(this.props.element.content);
     }
-    if (this.props.element.hasOwnProperty('label')) {
-      editorState = this.convertFromHTML(this.props.element.label);
+    if (this.props.element.hasOwnProperty('labelDetail')) {
+      console.log(this.props.element)
+      editorState = this.convertFromHTML(this.props.element.labelDetail);
     }
 
     return (
@@ -195,14 +206,14 @@ export default class FormElementsEdit extends React.Component {
         { this.props.element.hasOwnProperty('label') &&
           <div className="form-group">
             <label>Label</label>
-            <input type="text" className="form-control" onChange={this.onEditorStateChange.bind(this, 0, 'label')} />
+            <input type="text" className="form-control" defaultValue={this.props.element.label} onChange={(x)=>this.onLabelChange('label', x.target.value)} />
             <br/>
             <label>Label description</label>
             <Editor
               toolbar={toolbar}
               defaultEditorState={editorState}
               onBlur={this.updateElement.bind(this)}
-              onEditorStateChange={this.onEditorStateChange.bind(this, 0, 'label')}
+              onEditorStateChange={this.onEditorStateChange.bind(this, 0, 'labelDetail')}
               stripPastedStyles={true} />
             <br />
             <div className="custom-control custom-checkbox">
