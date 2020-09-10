@@ -194,7 +194,10 @@ export default class FormElementsEdit extends React.Component {
         }
         { this.props.element.hasOwnProperty('label') &&
           <div className="form-group">
-            <label>Display Label</label>
+            <label>Label</label>
+            <input type="text" className="form-control" onChange={this.onEditorStateChange.bind(this, 0, 'label')} />
+            <br/>
+            <label>Label description</label>
             <Editor
               toolbar={toolbar}
               defaultEditorState={editorState}
