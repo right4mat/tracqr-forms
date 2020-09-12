@@ -1,12 +1,12 @@
 {
-  "name": "react-form-builder2",
-  "version": "0.5.12",
+  "name": "@right4mat/trac-qr-forms",
+  "version": "1.0.0",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kiho/react-form-builder.git"
+    "url": "git+https://github.com/right4mat/tracqr-forms.git"
   },
   "files": [
     "lib",

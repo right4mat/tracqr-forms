@@ -11,11 +11,11 @@ import { get } from './stores/requests';
 import ID from './UUID';
 
 const toolbar = {
-  options: ['inline', 'list', 'textAlign', 'fontSize', 'link', 'history'],
+  options: ['list', 'fontSize'],
   inline: {
     inDropdown: false,
     className: undefined,
-    options: ['bold', 'italic', 'underline', 'superscript', 'subscript'],
+    options: ['bold', 'italic'],
   },
 };
 
@@ -287,19 +287,6 @@ export default class FormElementsEdit extends React.Component {
             </div>
           </div>
         }
-
-        {canHaveAlternateForm &&
-          <div className="form-group">
-            <label className="control-label">Alternate/Signature Page</label>
-            <div className="custom-control custom-checkbox">
-              <input id="display-on-alternate" className="custom-control-input" type="checkbox" checked={this_checked_alternate_form} value={true} onChange={this.editElementProp.bind(this, 'alternateForm', 'checked')} />
-              <label className="custom-control-label" htmlFor="display-on-alternate">
-                Display on alternate/signature Page?
-              </label>
-            </div>
-          </div>
-        }
-
         { this.props.element.hasOwnProperty('step') &&
           <div className="form-group">
             <div className="form-group-range">
@@ -334,46 +321,10 @@ export default class FormElementsEdit extends React.Component {
             </div>
           </div>
         }
-        { this.props.element.hasOwnProperty('static') && this.props.element.static &&
-          <div className="form-group">
-            <label className="control-label">Text Style</label>
-            <div className="custom-control custom-checkbox">
-              <input id="do-bold" className="custom-control-input" type="checkbox" checked={this_checked_bold} value={true} onChange={this.editElementProp.bind(this, 'bold', 'checked')} />
-              <label className="custom-control-label" htmlFor="do-bold">
-                Bold
-              </label>
-            </div>
-            <div className="custom-control custom-checkbox">
-              <input id="do-italic" className="custom-control-input" type="checkbox" checked={this_checked_italic} value={true} onChange={this.editElementProp.bind(this, 'italic', 'checked')} />
-              <label className="custom-control-label" htmlFor="do-italic">
-                Italic
-              </label>
-            </div>
-          </div>
-        }
         { this.props.element.showDescription &&
           <div className="form-group">
             <label className="control-label" htmlFor="questionDescription">Description</label>
             <TextAreaAutosize type="text" className="form-control" id="questionDescription" defaultValue={this.props.element.description} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'description', 'value')} />
-          </div>
-        }
-        { this.props.showCorrectColumn && this.props.element.canHaveAnswer && !this.props.element.hasOwnProperty('options') &&
-          <div className="form-group">
-            <label className="control-label" htmlFor="correctAnswer">Correct Answer</label>
-            <input id="correctAnswer" type="text" className="form-control" defaultValue={this.props.element.correct} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'correct', 'value')} />
-          </div>
-        }
-        { this.props.element.canPopulateFromApi && this.props.element.hasOwnProperty('options') &&
-          <div className="form-group">
-            <label className="control-label" htmlFor="optionsApiUrl">Populate Options from API</label>
-            <div className="row">
-              <div className="col-sm-6">
-                <input className="form-control" style={{ width: '100%' }} type="text" id="optionsApiUrl" placeholder="http://localhost:8080/api/optionsdata" />
-              </div>
-              <div className="col-sm-6">
-                <button onClick={this.addOptions.bind(this)} className="btn btn-success">Populate</button>
-              </div>
-            </div>
           </div>
         }
         { this.props.element.hasOwnProperty('options') &&

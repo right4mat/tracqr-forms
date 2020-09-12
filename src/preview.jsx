@@ -100,6 +100,23 @@ export default class Preview extends React.Component {
   }
 
   _onDestroy(item) {
+    if(item.id === '2EA29CE1-6537-4CD9-BEFC-7C1761FDCF51'){
+
+      return alert("First name is compulsory. You cannot delete!")
+
+    }else if(item.id === '0C990484-2E5A-4809-BA7A-ED4FC8D1BAEE'){
+
+      return alert("Last name is compulsory. You cannot delete!")
+
+    }else if(item.id === '7678F35F-2A1A-46D3-A52C-A1AE0738AA31'){
+
+      return alert("Email address is compulsory. You cannot delete!")
+      
+    }else if(item.id === '9D02FCB4-5947-4733-A3E9-4066A260FF74'){
+
+      return alert("Phone number is compulsory. You cannot delete!")
+      
+    }
     if(window.confirm("WARNING! deleting form item will cuase any data attched to this feild to also be removed. Are you sure you want to delete?"))
       store.dispatch('delete', item);
   }
