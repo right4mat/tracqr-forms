@@ -65,7 +65,7 @@ export default class Demobar extends React.Component {
 
   // eslint-disable-next-line no-unused-vars
   _onSubmit(data) {
-    // console.log('onSubmit', data);
+    console.log('onSubmit', data);
     // Place code to post json data to server here
   }
 
@@ -97,15 +97,10 @@ export default class Demobar extends React.Component {
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <ReactFormGenerator
-                  download_path=""
-                  back_action="/"
-                  back_name="Back"
                   answer_data={answers}
                   action_name="Save"
-                  form_action="/api/form"
-                  form_method="POST"
-                  // skip_validations={true}
-                  // onSubmit={this._onSubmit}
+                  //skip_validations={true}
+                  onSubmit={this._onSubmit}
                   variables={this.props.variables}
                   data={this.state.data} />
 
@@ -132,7 +127,8 @@ export default class Demobar extends React.Component {
                   read_only={true}
                   variables={this.props.variables}
                   hide_actions={true}
-                  data={this.state.data} />
+                  data={this.state.data}                   onSubmit={this._onSubmit}
+                  variables={this.props.variables}/>
 
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>
@@ -155,7 +151,8 @@ export default class Demobar extends React.Component {
                   data={this.state.data}
                   display_short={true}
                   variables={this.props.variables}
-                  hide_actions={false} />
+                  hide_actions={false}                   onSubmit={this._onSubmit}
+                  variables={this.props.variables}/>
 
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>

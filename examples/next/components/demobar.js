@@ -88,12 +88,6 @@ export default class Demobar extends React.Component {
               <div className="modal-content">
                 <div className="modal-body">
                     <ReactFormGenerator
-                        download_path=""
-                        back_name="Back"
-                        answer_data={{}}
-                        action_name="reee"
-                        form_action="/"
-                        form_method="POST"
                         onSubmit={this.submit}
                         variables={this.props.variables}
                         data={this.state.data} />
